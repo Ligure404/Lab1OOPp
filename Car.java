@@ -11,6 +11,19 @@ public class Car implements Movable{
     public double y;
     public String direction;
 
+    public Car(){
+        nrDoors = 4;
+        color = Color.red;
+        modelName = "Car";
+        enginePower = 100;
+        currentSpeed = 0;
+        x = 0;
+        y = 0;
+        direction = "f";
+
+    }
+
+
     public int getNrDoors(){
         return nrDoors;
     }
@@ -59,16 +72,16 @@ public class Car implements Movable{
 
     public void turnLeft() {
         if (direction.equals("f")) {direction = "l";}
-        if (direction.equals("l")) {direction = "b";}
-        if (direction.equals("b")) {direction = "r";}
-        if (direction.equals("r")) {direction = "f";}
+        else if (direction.equals("l")) {direction = "b";}
+        else if (direction.equals("b")) {direction = "r";}
+        else if (direction.equals("r")) {direction = "f";}
     }
 
     public void turnRight() {
         if (direction.equals("f")) {direction = "r";}
-        if (direction.equals("r")) {direction = "b";}
-        if (direction.equals("b")) {direction = "l";}
-        if (direction.equals("l")) {direction = "f";}
+        else if (direction.equals("r")) {direction = "b";}
+        else if (direction.equals("b")) {direction = "l";}
+        else if (direction.equals("l")) {direction = "f";}
     }
 
     // TODO fix this method according to lab pm
