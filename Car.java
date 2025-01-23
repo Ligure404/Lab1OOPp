@@ -1,32 +1,37 @@
 import java.awt.*;
+import java.util.Dictionary;
+import java.util.Hashtable;
 
 public class Car implements Movable{
 
-    public int nrDoors;
-    public double enginePower;
-    public double currentSpeed;
-    public Color color;
-    public String modelName;
-    public double x;
-    public double y;
-    public String direction;
+    private final int nrDoors;
+    private final double enginePower;
+    private double currentSpeed;
+    private Color color;
+    private final String modelName;
+    private double x;
+    private double y;
+    private String direction;
 
-    public Car(){
-        nrDoors = 4;
-        color = Color.red;
-        modelName = "Car";
-        enginePower = 100;
-        currentSpeed = 0;
-        x = 0;
-        y = 0;
-        direction = "f";
+    public Car(int nrDoors, double enginePower, Color color, String modelName) {
+        this.nrDoors = nrDoors;
+        this.enginePower = enginePower;
+        this.color = color;
+       // public class Volvo240 extends Car { super(4, 100, "Volvo240") }  this.nrDoors = 0;
+        this.modelName = modelName;
+
+        this.x = 0;
+        this.y = 0;
+        this.direction = "north";
+
+        stopEngine();
 
     }
-
 
     public int getNrDoors(){
         return nrDoors;
     }
+
     public double getEnginePower(){
         return enginePower;
     }
@@ -35,7 +40,9 @@ public class Car implements Movable{
         return currentSpeed;
     }
 
-    public Color getColor(){
+    public void setCurrentSpeed(double value) {currentSpeed = value;}
+
+    public Color getColor() {
         return color;
     }
 
@@ -56,42 +63,55 @@ public class Car implements Movable{
     }
 
     public void incrementSpeed(double amount){
-        currentSpeed = getCurrentSpeed() + speedFactor() * amount;
+        setCurrentSpeed(Math.min(getCurrentSpeed() + speedFactor() * amount,getEnginePower()));;
     }
 
     public void decrementSpeed(double amount){
-        currentSpeed = getCurrentSpeed() - speedFactor() * amount;
+        setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount,0));
+    }
+
+    public Dictionary<String, Double> getPos(){
+        Dictionary<String, Double> pos = new Hashtable<>();
+        pos.put("x", x);
+        pos.put("y", y);
+        return pos;
     }
 
     public void move() {
-        if (direction.equals("f")) {y += getCurrentSpeed();}
-        else if (direction.equals("b")) {y -= getCurrentSpeed();}
-        else if (direction.equals("l")) {x -= getCurrentSpeed();}
-        else if (direction.equals("r")) {x += getCurrentSpeed();}
+        switch (direction) {
+            case "north" -> y += getCurrentSpeed();
+            case "south" -> y -= getCurrentSpeed();
+            case "west" -> x -= getCurrentSpeed();
+            case "east" -> x += getCurrentSpeed();
+        }
     }
 
     public void turnLeft() {
-        if (direction.equals("f")) {direction = "l";}
-        else if (direction.equals("l")) {direction = "b";}
-        else if (direction.equals("b")) {direction = "r";}
-        else if (direction.equals("r")) {direction = "f";}
+        switch (direction) {
+            case "north" -> direction = "west";
+            case "west" -> direction = "south";
+            case "south" -> direction = "east";
+            case "east" -> direction = "north";
+        }
     }
 
     public void turnRight() {
-        if (direction.equals("f")) {direction = "r";}
-        else if (direction.equals("r")) {direction = "b";}
-        else if (direction.equals("b")) {direction = "l";}
-        else if (direction.equals("l")) {direction = "f";}
+        switch (direction) {
+            case "north" -> direction = "east";
+            case "east" -> direction = "south";
+            case "south" -> direction = "west";
+            case "west" -> direction = "north";
+        }
     }
 
     // TODO fix this method according to lab pm
     public void gas(double amount){
-        incrementSpeed(amount);
+        if (0 <= amount && amount <= 1 && currentSpeed <= enginePower) {incrementSpeed(amount);}
     }
 
     // TODO fix this method according to lab pm
     public void brake(double amount){
-        decrementSpeed(amount);
+        if (0 <= amount && amount <= 1 && 0 <= currentSpeed) {decrementSpeed(amount);}
     }
 
 
