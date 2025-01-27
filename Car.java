@@ -27,6 +27,7 @@ public class Car implements Movable{
         stopEngine();
 
     }
+    public String getModel() { return modelName;}
 
     public int getNrDoors(){
         return nrDoors;
@@ -62,11 +63,11 @@ public class Car implements Movable{
         return enginePower * 0.01;
     }
 
-    public void incrementSpeed(double amount){
+    private void incrementSpeed(double amount){
         setCurrentSpeed(Math.min(getCurrentSpeed() + speedFactor() * amount,getEnginePower()));;
     }
 
-    public void decrementSpeed(double amount){
+    private void decrementSpeed(double amount){
         setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount,0));
     }
 

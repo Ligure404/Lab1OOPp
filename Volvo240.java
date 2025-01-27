@@ -1,6 +1,5 @@
 import java.awt.*;
 import java.util.Dictionary;
-import java.util.Hashtable;
 
 public class Volvo240 extends Car {
 
