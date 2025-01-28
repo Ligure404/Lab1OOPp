@@ -35,11 +35,11 @@ public class Volvo240 extends Car {
 
         car.move();
 
-        Dictionary <String, Double> pos = car.getPos();
+        double[] pos = car.getPos();
 
         // print(f"x: {dict[x]}, y: {dict[y]"))
-        System.out.print("x:"+ pos.get("x") + "   ");
-        System.out.print("y:"+ pos.get("y"));
+        System.out.print("x:" + pos[0] + "   ");
+        System.out.print("y:"+ pos[1]);
 
     }
 

@@ -1,6 +1,4 @@
 import java.awt.*;
-import java.util.Dictionary;
-import java.util.Hashtable;
 
 public class Car implements Movable{
 
@@ -71,10 +69,10 @@ public class Car implements Movable{
         setCurrentSpeed(Math.max(getCurrentSpeed() - speedFactor() * amount,0));
     }
 
-    public Dictionary<String, Double> getPos(){
-        Dictionary<String, Double> pos = new Hashtable<>();
-        pos.put("x", x);
-        pos.put("y", y);
+    public double[] getPos(){
+        double[] pos = new double[2];
+        pos[0] = x;
+        pos[1] = y;
         return pos;
     }
 
