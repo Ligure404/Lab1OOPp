@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 public class CarTest {
 
     @Test
-    public void gas_and_brake() {
+    public void gasBrakeTest() {
         Car c = new Saab95();
         c.startEngine();
         c.gas(100);
@@ -20,7 +20,7 @@ public class CarTest {
     }
 
     @Test
-    public void move_and_turn() {
+    public void moveTurnTest() {
 
         Volvo240 car = new Volvo240();
 
@@ -40,7 +40,7 @@ public class CarTest {
     }
 
     @Test
-    public void color() {
+    public void colorTest() {
 
         Saab95 car = new Saab95();
 
@@ -55,7 +55,7 @@ public class CarTest {
     }
 
     @Test
-    public void turbo() {
+    public void turboTest() {
 
         Saab95 car = new Saab95();
         car.startEngine();
