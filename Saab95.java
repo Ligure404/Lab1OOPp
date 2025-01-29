@@ -7,7 +7,7 @@ public class Saab95 extends Car{
 
     public Saab95(){
 
-        super(4, 125, Color.red, "Saab95");
+        super(2, 125, Color.red, "Saab95");
         //Initierar från car med bestämda värden.
 
 	    turboOn = false;
