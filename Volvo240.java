@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.util.Dictionary;
 
 public class Volvo240 extends Car {
 

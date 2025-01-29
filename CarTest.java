@@ -9,14 +9,18 @@ public class CarTest {
     public void gasBrakeTest() {
         Car c = new Saab95();
         c.startEngine();
-        c.gas(100);
-        assertEquals(1.1, c.getCurrentSpeed(), 0.0);
-        c.brake(100);
-        assertEquals(0.1, c.getCurrentSpeed(), 0.0);
+        c.gas(1);
+        assertEquals(1.35, c.getCurrentSpeed(), 0.0001);
+        c.brake(1);
+        assertEquals(0.1, c.getCurrentSpeed(), 0.0001);
         c.gas(1000000000);
-        assertEquals(125, c.getCurrentSpeed(), 0.0);
+        assertEquals(0.1, c.getCurrentSpeed(), 0.0001);
         c.brake(100000000);
-        assertEquals(0, c.getCurrentSpeed(), 0.0);
+        assertEquals(0.1, c.getCurrentSpeed(), 0.0001);
+        for (int i=0; i<500; i++) {
+            c.gas(1);
+        }
+        assertEquals(125, c.getCurrentSpeed(), 0.0);
     }
 
     @Test
@@ -34,7 +38,7 @@ public class CarTest {
 
         double[] pos = car.getPos();
 
-        assertEquals(0.1, pos[0], 0);
+        assertEquals(-0.1, pos[0], 0);
 
         assertEquals(0.1, pos[1], 0);
     }
@@ -61,10 +65,10 @@ public class CarTest {
         Saab95 car = new Saab95();
         car.startEngine();
 
-        assertEquals(1.25, car.speedFactor());
+        assertEquals(1.25, car.speedFactor(), 0.0001);
 
         car.setTurboOn();
 
-        assertEquals(1.625, car.speedFactor());
+        assertEquals(1.625, car.speedFactor(), 0.0001);
     }
 }

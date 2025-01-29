@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Car implements Movable{
+public abstract class Car implements Movable{
 
     private final int nrDoors;
     private final double enginePower;
@@ -103,12 +103,10 @@ public class Car implements Movable{
         }
     }
 
-    // TODO fix this method according to lab pm
     public void gas(double amount){
         if (0 <= amount && amount <= 1 && currentSpeed <= enginePower) {incrementSpeed(amount);}
     }
 
-    // TODO fix this method according to lab pm
     public void brake(double amount){
         if (0 <= amount && amount <= 1 && 0 <= currentSpeed) {decrementSpeed(amount);}
     }
