@@ -20,7 +20,7 @@ public class CarTest {
     }
 
     @Test
-    public void move() {
+    public void move_and_turn() {
 
         Volvo240 car = new Volvo240();
 
