@@ -1,12 +1,14 @@
 import java.awt.*;
 
 public class Saab95 extends Car{
+    //Ärver majoritet från Car
 
     public boolean turboOn;
 
     public Saab95(){
 
         super(4, 125, Color.red, "Saab95");
+        //Initierar från car med bestämda värden.
 
 	    turboOn = false;
 

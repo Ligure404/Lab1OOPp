@@ -1,6 +1,7 @@
 import java.awt.*;
 
 public abstract class Car implements Movable{
+    //Abstrakt class, kan inte skapa instanser. Tanken är att det inte ska gå att skapa en generisk bil
 
     private final int nrDoors;
     private final double enginePower;
@@ -12,10 +13,10 @@ public abstract class Car implements Movable{
     private String direction;
 
     public Car(int nrDoors, double enginePower, Color color, String modelName) {
+        //Definierar instansvariabler
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
         this.color = color;
-       // public class Volvo240 extends Car { super(4, 100, "Volvo240") }  this.nrDoors = 0;
         this.modelName = modelName;
 
         this.x = 0;
@@ -76,6 +77,7 @@ public abstract class Car implements Movable{
         return pos;
     }
 
+    //Rör sig enligt ett x/y grid beroende på riktning
     public void move() {
         switch (direction) {
             case "north" -> y += getCurrentSpeed();
@@ -103,6 +105,7 @@ public abstract class Car implements Movable{
         }
     }
 
+    //Gas och brake ska bara kunna ta värden mellan 0 och 1
     public void gas(double amount){
         if (0 <= amount && amount <= 1 && currentSpeed <= enginePower) {incrementSpeed(amount);}
     }
