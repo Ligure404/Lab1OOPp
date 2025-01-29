@@ -13,7 +13,7 @@ public abstract class Car implements Movable{
     private String direction;
 
     public Car(int nrDoors, double enginePower, Color color, String modelName) {
-        //Definierar instansvariabler!
+        //Definierar instansvariabler
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
         this.color = color;
