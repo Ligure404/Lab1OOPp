@@ -1,8 +1,9 @@
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.Test;
+
 import java.awt.*;
 
-class CarTest {
+import static org.junit.Assert.*;
+public class CarTest {
 
     @Test
     public void gas_and_brake() {
@@ -65,5 +66,4 @@ class CarTest {
 
         assertEquals(1.625, car.speedFactor());
     }
-  
 }
