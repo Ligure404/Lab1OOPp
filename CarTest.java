@@ -22,16 +22,25 @@ public class CarTest {
         c.brake(1);
         assertEquals(0.1, v.getCurrentSpeed(), 0.0001);
         assertEquals(0.1, c.getCurrentSpeed(), 0.0001);
+    }
 
-        c.gas(1000000000);
-        assertEquals(0.1, c.getCurrentSpeed(), 0.0001);
-        c.brake(100000000);
-        assertEquals(0.1, c.getCurrentSpeed(), 0.0001);
-
+    @Test
+    public void maxSpeedTest() {
+        Car c = new Saab95();
         for (int i=0; i<500; i++) {
             c.gas(1);
         }
         assertEquals(125, c.getCurrentSpeed(), 0.0);
+    }
+
+    @Test
+    public void illegalArgumentTest() {
+        Car c = new Volvo240();
+        c.startEngine();
+        Exception exception = assertThrows(IllegalArgumentException.class,
+                () -> c.gas(1000));
+        assertEquals("amount not allowed", exception.getMessage());
+
     }
 
     @Test

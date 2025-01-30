@@ -10,7 +10,7 @@ public abstract class Car implements Movable{
     private final String modelName;
     private double x;
     private double y;
-    private String direction;
+    private Direction direction;
 
     public Car(int nrDoors, double enginePower, Color color, String modelName) {
         //Definierar instansvariabler
@@ -21,7 +21,7 @@ public abstract class Car implements Movable{
 
         this.x = 0;
         this.y = 0;
-        this.direction = "north";
+        this.direction = Direction.NORTH;
 
         stopEngine();
 
@@ -40,7 +40,7 @@ public abstract class Car implements Movable{
         return currentSpeed;
     }
 
-    public void setCurrentSpeed(double value) {currentSpeed = value;}
+    protected void setCurrentSpeed(double value) {currentSpeed = value;}
 
     public Color getColor() {
         return color;
@@ -80,38 +80,40 @@ public abstract class Car implements Movable{
     //Rör sig enligt ett x/y grid beroende på riktning
     public void move() {
         switch (direction) {
-            case "north" -> y += getCurrentSpeed();
-            case "south" -> y -= getCurrentSpeed();
-            case "west" -> x -= getCurrentSpeed();
-            case "east" -> x += getCurrentSpeed();
+            case NORTH -> y += getCurrentSpeed();
+            case SOUTH -> y -= getCurrentSpeed();
+            case WEST -> x -= getCurrentSpeed();
+            case EAST -> x += getCurrentSpeed();
         }
     }
 
     public void turnLeft() {
         switch (direction) {
-            case "north" -> direction = "west";
-            case "west" -> direction = "south";
-            case "south" -> direction = "east";
-            case "east" -> direction = "north";
+            case NORTH -> direction = Direction.WEST;
+            case WEST -> direction = Direction.SOUTH;
+            case SOUTH -> direction = Direction.EAST;
+            case EAST -> direction = Direction.NORTH;
         }
     }
 
     public void turnRight() {
         switch (direction) {
-            case "north" -> direction = "east";
-            case "east" -> direction = "south";
-            case "south" -> direction = "west";
-            case "west" -> direction = "north";
+            case NORTH -> direction = Direction.EAST;
+            case EAST -> direction = Direction.SOUTH;
+            case SOUTH -> direction = Direction.WEST;
+            case WEST -> direction = Direction.NORTH;
         }
     }
 
     //Gas och brake ska bara kunna ta värden mellan 0 och 1
     public void gas(double amount){
         if (0 <= amount && amount <= 1) {incrementSpeed(amount);}
+        else throw new IllegalArgumentException("amount not allowed");
     }
 
     public void brake(double amount){
         if (0 <= amount && amount <= 1) {decrementSpeed(amount);}
+        else throw new IllegalArgumentException("amount not allowed");
     }
 
 

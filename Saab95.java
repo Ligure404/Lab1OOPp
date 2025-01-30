@@ -3,7 +3,7 @@ import java.awt.*;
 public class Saab95 extends Car{
     //Ärver majoritet från Car
 
-    public boolean turboOn;
+    private boolean turboOn;
 
     public Saab95(){
 
