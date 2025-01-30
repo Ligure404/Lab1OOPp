@@ -63,7 +63,7 @@ public abstract class Car implements Movable{
     }
 
     private void incrementSpeed(double amount){
-        setCurrentSpeed(Math.min(getCurrentSpeed() + speedFactor() * amount,getEnginePower()));;
+        setCurrentSpeed(Math.min(getCurrentSpeed() + speedFactor() * amount,getEnginePower()));
     }
 
     private void decrementSpeed(double amount){
