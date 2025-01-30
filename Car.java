@@ -107,11 +107,11 @@ public abstract class Car implements Movable{
 
     //Gas och brake ska bara kunna ta värden mellan 0 och 1
     public void gas(double amount){
-        if (0 <= amount && amount <= 1 && currentSpeed <= enginePower) {incrementSpeed(amount);}
+        if (0 <= amount && amount <= 1) {incrementSpeed(amount);}
     }
 
     public void brake(double amount){
-        if (0 <= amount && amount <= 1 && 0 <= currentSpeed) {decrementSpeed(amount);}
+        if (0 <= amount && amount <= 1) {decrementSpeed(amount);}
     }
 
 
