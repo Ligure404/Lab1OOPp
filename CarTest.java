@@ -8,10 +8,16 @@ public class CarTest {
     @Test
     public void gasBrakeTest() {
         Car c = new Saab95();
+        Car v = new Volvo240();
         c.startEngine();
+        v.startEngine();
         c.gas(1);
+        v.gas(1);
+        assertEquals(1.35, v.getCurrentSpeed(), 0.0001);
         assertEquals(1.35, c.getCurrentSpeed(), 0.0001);
+        v.brake(1);
         c.brake(1);
+        assertEquals(0.1, v.getCurrentSpeed(), 0.0001);
         assertEquals(0.1, c.getCurrentSpeed(), 0.0001);
         c.gas(1000000000);
         assertEquals(0.1, c.getCurrentSpeed(), 0.0001);
